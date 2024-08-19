@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add maindish</title>
+</head>
+<body>
+    <form  method="post" enctype="multipart/form-data">
+        {% csrf_token%}
+        <label for="title">main dish title</label>
+        <input type="text" name="title" value="{{main.title}}">
+        <label for="description">main dish description</label>
+        <input type="text" name="description" value="{{main.description}}">
+        <label for="price">price</label>
+        <input type="number" name ="price" value="{{main.price}}">
+        <label for="stock">stock</label>
+        <input type="number" name="stock" value="{{main.stock}}">
+        <input type="submit" value="add">
+    </form>
+</body>
+</html>

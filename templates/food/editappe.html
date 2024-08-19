@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add appetizers</title>
+</head>
+<body>
+    <form  method="post" enctype="multipart/form-data">
+        {% csrf_token%}
+        <label for="title">appetizers title</label>
+        <input type="text" name="title" value="{{appe.title}}">
+        <label for="description">appetizers description</label>
+        <input type="text" name="description" value="{{appe.description}}">
+        <label for="price">price</label>
+        <input type="number" name ="price" value="{{appe.price}}">
+        <label for="stock">stock</label>
+        <input type="number" name="stock" value="{{appe.stock}}">
+        <input type="submit" value="add">
+    </form>
+</body>
+</html>

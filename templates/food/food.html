@@ -1,0 +1,49 @@
+{% extends "food/prod.html" %}
+{% block content %}
+<table>
+    <tr>
+        {%for m in main %}
+        <td>
+            <h1>title :{{m.title}}</h1>
+            <h2>price : {{m.price}}</h2>
+            <h2>stock : {{m.stock}}</h2>
+
+           <a href="{% url 'main' m.id %}"><h3>see more details</h3></a>
+        </td>
+        {% endfor %}
+    </tr>
+    <tr>
+        {%for a in appetizers %}
+        <td>
+            <h1>title :{{a.title}}</h1>
+            <h2>price : {{ a.price }}</h2>
+            <h2>stock : {{ a.stock }}</h2>
+
+           <a href="{% url 'appetizers' a.id %}"><h3>see more details</h3></a>
+        </td>
+        {% endfor %}
+    </tr>
+    <tr>
+        {%for s in souce %}
+        <td>
+            <h1>title :{{ s.title}}</h1>
+            <h2>price : {{s.price}}</h2>
+            <h2>stock : {{s.stock}}</h2>
+
+           <a href="{% url 'souce' s.id %}"><h3>see more details</h3></a>
+        </td>
+        {% endfor %}
+    </tr>
+    <tr>
+        {%for d in drink %}
+        <td>
+            <h1>title :{{d.title}}</h1>
+            <h2>price : {{d.price}}</h2>
+            <h2>stock : {{d.stock}}</h2>
+
+           <a href="{% url 'drink' d.id %}"><h3>see more details</h3></a>
+        </td>
+        {% endfor %}
+    </tr>
+</table>
+{% endblock content %}

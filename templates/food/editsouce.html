@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add souce</title>
+</head>
+<body>
+    <form  method="post" enctype="multipart/form-data">
+        {% csrf_token%}
+        <label for="title">souce title</label>
+        <input type="text" name="title" value="{{souce.title}}">
+        <label for="description">souce description</label>
+        <input type="text" name="description" value="{{souce.description}}">
+        <label for="price">price</label>
+        <input type="number" name ="price" value="{{souce.price}}">
+        <label for="stock">stock</label>
+        <input type="number" name="stock" value="{{souce.stock}}">
+        <input type="submit" value="add">
+    </form>
+</body>
+</html>

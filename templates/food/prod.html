@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>products</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <ul>
+            <a href="{% url 'addmain' %}"><li>add new maindish</li></a>
+            <a href="{% url 'addappe' %}"><li>add new appetizers</li></a>
+            <a href="{% url 'addsouce' %}"><li>add new souce</li></a>
+            <a href="{% url 'adddrink' %}"><li>add new drink</li></a>
+            {% if user.id %}
+            <li><h4>logout:{{user.username}}</h4></li>
+            {% else %}
+            <li><h4>login</h4></li>
+            {% endif %}
+        </ul>
+        {% block content %}
+        {% endblock content %}
+
+    </body>
+</html>
