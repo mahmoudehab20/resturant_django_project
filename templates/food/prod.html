@@ -3,22 +3,38 @@
 <html>
     <head>
         <title>products</title>
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
     </head>
     <body>
-        <ul>
-            <a href="{% url 'addmain' %}"><li>add new maindish</li></a>
-            <a href="{% url 'addappe' %}"><li>add new appetizers</li></a>
-            <a href="{% url 'addsouce' %}"><li>add new souce</li></a>
-            <a href="{% url 'adddrink' %}"><li>add new drink</li></a>
-            {% if user.id %}
-            <li><h4>logout:{{user.username}}</h4></li>
-            {% else %}
-            <li><h4>login</h4></li>
-            {% endif %}
-        </ul>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Resturant</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+                  </li>
+                  {% if user.id %}
+                  <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button class="btn btn-light" type="submit">{{user}}:logout</button>
+                </form>
+                {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'signup' %}">SIGNUP</a>
+                  </li>
+                </ul>
+                {% endif %}
+              </div>
+            </div>
+          </nav>
         {% block content %}
         {% endblock content %}
-
     </body>
 </html>

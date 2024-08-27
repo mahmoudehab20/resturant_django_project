@@ -1,35 +1,26 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>buy now</title>
-    </head>
-    <style>
-    body{
-        background-color: lightyellow;
-    }
-    #pr{
-        text-align: center;
-        width: 200px;
-        height: 300px;
-        background-color: lightcyan;
-        border-radius: 20%;
-        margin: 100px auto;
-        padding: 40px;
-    }
-    a{
-        border:2px solid black;
-        border-radius: 5px;
-    }
-    </style>
-    <body>
-        <div id="pr">
-            <h3><u>{{main.title}}</u></h3><br>
-            <h3>DESCRIPTION :{{main.description}}</h3>
-            <h3>PRICE :{{main.price}}</h3><br>
-            <h3>IN STOCK :{{main.stock}}</h3><br>
-            <a href="{% url 'maindel' main.id %}">delete</a>
-            <a href="{% url 'buymain' main.id %}">buy</a>
-            <a href="{% url 'editmain' main.id%}">edit</a>
+{% extends 'food/prod.html'%}
+{% block content %}
+{% if messages %}
+    <ul class="messages" style="background-color: #f8d7da;
+    color: #721c24;">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<div style="justify-content: center;display: flex;">
+    <div class="card" style="width: 18rem;">
+        <img src="{{main.get_image_url}}" class="card-img-top" alt="Not Found">
+        <div class="card-body">
+            <h5 class="card-title">{{main.title}}</h5>
+            <p class="card-text">{{main.description}}</p>
+            <h5 class="card-title">price:{{main.price}}</h5>
+            <h5 class="card-title">in stock:{{main.stock}}</h5>
+            <a class="btn btn-succes" href="{% url 'buymain' main.id %}">buy</a>
+            <a class="btn btn-info" href="{% url 'editmain' main.id %}">edit</a>
+            <a class="btn btn-danger" href="{% url 'maindel' main.id %}">delete</a>
         </div>
-    </body>
-</html>
+    </div>
+</div>
+{% endblock content %}

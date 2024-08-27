@@ -1,49 +1,68 @@
 {% extends "food/prod.html" %}
+
 {% block content %}
-<table>
-    <tr>
-        {%for m in main %}
-        <td>
-            <h1>title :{{m.title}}</h1>
-            <h2>price : {{m.price}}</h2>
-            <h2>stock : {{m.stock}}</h2>
+<a href="{% url 'addmain' %}" class="btn btn-primary">Add New Maindish</a>
+<div style="display: flex;">
+{%for m in main %}
+<div class="card" style="width: 18rem; margin: 5px;">
+    <img src="{{m.get_image_url}}" class="card-img-top" alt="Not Found" style="width:inherit;height: 250;">
+    <div class="card-body">
+        <h5 class="card-title">{{m.title}}</h5>
+        <p class="card-text">{{m.description}}</p>
+        <h5 class="card-title">price:{{m.price}}</h5>
+        <h5 class="card-title">in stock:{{m.stock}}</h5>
+        <a href="{% url 'main' m.id %}" class="btn btn-primary">details</a>
+    </div>
+</div>
+{% endfor %}
+</div>
 
-           <a href="{% url 'main' m.id %}"><h3>see more details</h3></a>
-        </td>
-        {% endfor %}
-    </tr>
-    <tr>
-        {%for a in appetizers %}
-        <td>
-            <h1>title :{{a.title}}</h1>
-            <h2>price : {{ a.price }}</h2>
-            <h2>stock : {{ a.stock }}</h2>
+<a href="{% url 'addappe' %}" class="btn btn-primary">Add New Appetizer</a>
+<div style="display: flex;">
+{%for a in appetizers %}
+<div class="card" style="width: 18rem;margin: 5px;">
+    <img src="{{a.get_image_url}}" class="card-img-top" alt="Not Found" style="width:inherit;height: 250;">
+    <div class="card-body">
+        <h5 class="card-title">{{a.title}}</h5>
+        <p class="card-text">{{a.description}}</p>
+        <h5 class="card-title">price:{{a.price}}</h5>
+        <h5 class="card-title">in stock:{{a.stock}}</h5>
+        <a href="{% url 'appetizers' a.id %}" class="btn btn-primary">details</a>
+    </div>
+</div>
+{% endfor %}
+</div>
 
-           <a href="{% url 'appetizers' a.id %}"><h3>see more details</h3></a>
-        </td>
-        {% endfor %}
-    </tr>
-    <tr>
-        {%for s in souce %}
-        <td>
-            <h1>title :{{ s.title}}</h1>
-            <h2>price : {{s.price}}</h2>
-            <h2>stock : {{s.stock}}</h2>
-
-           <a href="{% url 'souce' s.id %}"><h3>see more details</h3></a>
-        </td>
-        {% endfor %}
-    </tr>
-    <tr>
-        {%for d in drink %}
-        <td>
-            <h1>title :{{d.title}}</h1>
-            <h2>price : {{d.price}}</h2>
-            <h2>stock : {{d.stock}}</h2>
-
-           <a href="{% url 'drink' d.id %}"><h3>see more details</h3></a>
-        </td>
-        {% endfor %}
-    </tr>
-</table>
+<a href="{% url 'addsouce' %}" class="btn btn-primary">Add New Souce</a>
+<div style="display: flex;">
+{%for s in souce %}
+<div class="card" style="width: 18rem;margin: 5px;">
+    <img src="{{s.get_image_url}}" class="card-img-top" alt="Not Found" style="width:inherit;height: 250;">
+    <div class="card-body">
+        <h5 class="card-title">{{s.title}}</h5>
+        <p class="card-text">{{s.description}}</p>
+        <h5 class="card-title">price:{{s.price}}</h5>
+        <h5 class="card-title">in stock:{{s.stock}}</h5>
+        <a href="{% url 'souce' s.id %}" class="btn btn-primary">details</a>
+    </div>
+</div>
+{% endfor %}
+</div>
+   
+<a href="{% url 'adddrink' %}" class="btn btn-primary">Add New Drink</a>
+<div style="display: flex;">
+{%for d in drink %}
+<div class="card" style="width: 18rem;margin: 5px;">
+    <img src="{{d.get_image_url}}" class="card-img-top" alt="Not Found" style="width:inherit;height: 250;">
+    <div class="card-body">
+        <h5 class="card-title">{{d.title}}</h5>
+        <p class="card-text">{{d.description}}</p>
+        <h5 class="card-title">price:{{d.price}}</h5>
+        <h5 class="card-title">in stock:{{d.stock}}</h5>
+        <a href="{% url 'drink' d.id %}" class="btn btn-primary">details</a>
+    </div>
+</div>
+{% endfor %}
+</div>
+   
 {% endblock content %}

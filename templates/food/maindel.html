@@ -1,0 +1,9 @@
+{% extends 'food/prod.html' %}
+{% block content%}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2>Are You Sure You Want To Delete This Record?</h2>
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </form>
+  <a href="{% url 'main' main.id %}" class="btn btn-light">Cancel</a>
+  {% endblock content%}

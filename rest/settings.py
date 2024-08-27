@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'food.apps.FoodConfig',
-    'drinks.apps.DrinksConfig'
+    'drinks.apps.DrinksConfig',
+    
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+
+LOGIN_REDIRECT_URL='index'
+
+LOGOUT_REDIRECT_URL='index'

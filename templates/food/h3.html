@@ -1,77 +1,26 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>buy now</title>
-    </head>
-    <style>
-        body{
-        background-color: lightyellow;
-        }
-    ul{
-        margin:0px 0px 10px 10px;
-        text-align:right;
-        width:100%;
-        height: 50px;
-    }
-   li{
-        padding: 5px;
-        margin: 0px 20px 20px 20px;
-        list-style-type:none;
-        display: inline-block;
-        font: bolder 20px tahoma;
-    }
-    *{
-        padding: 0px;
-        margin: 0px;
-    }
-    #home{
-        float: left;
-        height: 40px; 
-        width: 40px; ;
-    }
-    li:hover{
-    color:magenta;
-    text-decoration:underline;
-    cursor:pointer;
-    }
-    li:active {
-    color: darkmagenta;
-    }
-   
-        #wa{
-            width: 70px;
-            height: 70px;
-        }
-        #pro{
-            width: 200px;
-            height: initial;
-        }
-        #pr{
-            text-align: center;
-            width: 550px;
-            height: 600px;
-            background-color: lightcyan;
-            border-radius: 20%;
-            margin: 100px auto;
-            padding: 40px;
-
-        }
-    </style>
-    <body>
-        <a href="login.html"><img id="home" src="Images/home.png"></a>
-    <ul>
-        <a href="prod.html"><li>products</li></a>
-        <a href="aboutus.html"><li>about us</li></a>
-        <a href="contactus.html"><li>contact us</li></a>
+{% extends 'food/prod.html'%}
+{% block content %}
+{% if messages %}
+    <ul class="messages" style="background-color: #f8d7da;
+    color: #721c24;">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
     </ul>
-        <div id="pr">
-            <h3><u>{{souce.title}}</u></h3><br>
-            <h3>{{souce.description}}</h3>
-            <h3>{{souce.price}}</h3><br>
-            <h3>{{souce.stock}}</h3><br>
-            <a href="{% url 'soucedel' souce.id %}">delete</a>
-            <a href="{% url 'buysouce' souce.id %}">buy</a>
-            <a href="{% url 'editsouce' souce.id %}">edit</a>
+{% endif %}
+
+<div style="justify-content: center;display: flex;">
+    <div class="card" style="width: 18rem;display: flex;">
+        <img src="{{souce.get_image_url}}" class="card-img-top" alt="Not Found">
+        <div class="card-body">
+            <h5 class="card-title">{{souce.title}}</h5>
+            <p class="card-text">{{souce.description}}</p>
+            <h5 class="card-title">price:{{souce.price}}</h5>
+            <h5 class="card-title">in stock:{{souce.stock}}</h5>
+            <a class="btn btn-succes" href="{% url 'buysouce' souce.id %}">buy</a>
+            <a class="btn btn-info" href="{% url 'editsouce' souce.id %}">edit</a>
+            <a class="btn btn-danger" href="{% url 'soucedel' souce.id %}">delete</a>
         </div>
-    </body>
-</html>
+    </div>
+</div>
+{% endblock content %}

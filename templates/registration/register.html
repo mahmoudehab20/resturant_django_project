@@ -1,0 +1,15 @@
+{% extends 'food/prod.html'%}
+
+{% block content %}
+<div class="bg-light" style="width: 70%s;margin:100px;" >
+    <h1> sign up </h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{form}}
+
+        <button type="submit" class="btn btn-primary">signup</button>
+    </form>
+
+</div>
+{% endblock content %}
